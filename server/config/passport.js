@@ -72,9 +72,8 @@ PassportStrategy = function (passport) {
                                 return done(err, user);
                             });
                             done(null, user);
-                        } else {
-                            done(null, user);
                         }
+                        done(null, user);
                     }
                 });
             }
