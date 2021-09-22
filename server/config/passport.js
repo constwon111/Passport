@@ -16,7 +16,7 @@ PassportStrategy = function (passport) {
                     "http://localhost:5000/api/users/auth/naver/callback",
             },
             function (accessToken, refreshToken, profile, done) {
-                console.log(accessToken);
+                // console.log(accessToken);
                 // console.log(profile);
                 User.findOne(
                     {
@@ -71,9 +71,8 @@ PassportStrategy = function (passport) {
                                 if (err) console.log(err);
                                 return done(err, user);
                             });
-                            done(null, user);
                         }
-                        done(null, user);
+                        done(null, user); //여기서 넘기는 애가 serialize로 들어감
                     }
                 });
             }
@@ -121,7 +120,10 @@ PassportStrategy = function (passport) {
     passport.serializeUser(function (user, done) {
         // console.log("user.id === ", user.id);
         // console.log("user._id===", user._id);
+        // console.log("seial", user);
         done(null, user._id);
+
+        // done(null, user._id);
     });
 
     passport.deserializeUser(function (id, done) {
