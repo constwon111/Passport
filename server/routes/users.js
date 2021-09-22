@@ -4,6 +4,8 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 // Load User model
 const User = require("../models/User");
+const authController = require("../controllers/authController");
+
 // const { forwardAuthenticated } = require("../config/auth");
 
 // Login Page
@@ -124,7 +126,7 @@ router.get(
     "/auth/google/callback",
     passport.authenticate("google", { failureRedirect: "/login" }),
     function (req, res) {
-        console.log("wow you are in cb of google");
+        // console.log("wow you are in cb of google");
         // Successful authentication, redirect home.
         res.redirect("http://localhost:3000");
     }
@@ -142,11 +144,14 @@ router.get(
     "/auth/naver/callback",
     passport.authenticate("naver", { failureRedirect: "/login" }),
     function (req, res) {
-        console.log("wow you are in cb of naver");
+        // console.log("wow you are in cb of naver");
         // Successful authentication, redirect home.
         res.redirect("http://localhost:3000");
     }
 );
+
+router.post("/forgotPassword", authController.forgotPassword);
+router.patch("/resetPassword/:token", authController.resetPassword);
 
 // router.get();
 
