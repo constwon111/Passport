@@ -5,22 +5,6 @@ import {
     GET_USER,
 } from "../_actions/types";
 
-// const user = function (state = {}, action) {
-//     console.log("hello");
-//     switch (action.type) {
-//         case LOGIN_USER:
-//             return { ...state, loginSuccess: action.payload };
-//             break;
-//         case REGISTER_USER:
-//             return { ...state, success: action.payload };
-//             break;
-//         default:
-//             return state;
-//     }
-// };
-
-// export default user;
-
 export default function (state = {}, action) {
     switch (action.type) {
         case LOGIN_USER:

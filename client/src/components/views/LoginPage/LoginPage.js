@@ -29,7 +29,7 @@ function LoginPage(props) {
             if (res.payload.loginSuccess) {
                 props.history.push("/");
             } else {
-                alert("Error!");
+                alert(res.payload.message);
             }
         });
     };
@@ -42,15 +42,7 @@ function LoginPage(props) {
 
     return (
         <div className="loginPage">
-            <div
-            // style={{
-            //     display: "flex",
-            //     justifyContent: "center",
-            //     alignItems: "center",
-            //     width: "100%",
-            //     height: "100vh",
-            // }}
-            >
+            <div>
                 <form
                     style={{ display: "flex", flexDirection: "column" }}
                     onSubmit={onSubmitHandler}
