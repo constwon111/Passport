@@ -13,7 +13,7 @@ exports.forgotPassword = async (req, res, next) => {
     //2) Generate the random reset token
     const resetToken = user.createPasswordResetToken();
     await user.save({ validateBeforeSave: false });
-    //if i dont make this option, Schema pre-check the rule so it could make error
+    //if I dont make this option, Schema pre-check the rule so it could make error
     //3) send it to user's email
     const resetURL = `${req.protocol}://${req.get(
         "host"

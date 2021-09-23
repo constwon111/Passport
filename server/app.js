@@ -4,9 +4,13 @@ const passport = require("passport");
 const session = require("express-session");
 const { PassportStrategy } = require("./config/passport");
 const cors = require("cors");
+const logger = require("morgan");
+
 require("dotenv").config();
 // require("dotenv").config({ path: path.join(__dirname, "./config.env") });
 const app = express();
+app.use(logger("dev"));
+
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 // Passport Config
