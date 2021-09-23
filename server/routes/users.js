@@ -7,10 +7,10 @@ const authController = require("../controllers/authController");
 
 router.post("/register", async (req, res) => {
     try {
-        const { name, email, password, password2 } = req.body;
+        const { username, email, password, password2 } = req.body;
         let errors = [];
 
-        if (!name || !email || !password || !password2) {
+        if (!username || !email || !password || !password2) {
             errors.push({ message: "Please enter all fields" });
         }
 
@@ -31,7 +31,7 @@ router.post("/register", async (req, res) => {
             let user = await User.findOne({ email });
             if (!user) {
                 user = new User({
-                    name,
+                    username,
                     email,
                     password,
                 });

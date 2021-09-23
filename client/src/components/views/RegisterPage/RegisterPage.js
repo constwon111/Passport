@@ -8,11 +8,11 @@ function RegisterPage(props) {
 
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
-    const [Name, setName] = useState("");
+    const [Username, setUsername] = useState("");
     const [Password2, setPassword2] = useState("");
 
-    const onNameHandler = (event) => {
-        setName(event.currentTarget.value);
+    const onUsernameHandler = (event) => {
+        setUsername(event.currentTarget.value);
     };
     const onPasswordHandler = (event) => {
         setPassword(event.currentTarget.value);
@@ -30,7 +30,7 @@ function RegisterPage(props) {
             email: Email,
             password: Password,
             password2: Password2,
-            name: Name,
+            username: Username,
         };
         // console.log("body", body);
         dispatch(registerUser(body)).then((res) => {
@@ -59,8 +59,8 @@ function RegisterPage(props) {
                 <label>Name</label>
                 <input
                     type="text"
-                    value={Name}
-                    onChange={onNameHandler}
+                    value={Username}
+                    onChange={onUsernameHandler}
                 ></input>
                 <label>Email</label>
                 <input

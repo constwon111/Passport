@@ -40,6 +40,7 @@ PassportStrategy = function (passport) {
                 callbackURL: process.env.PASSPORT_GOOGLE_CALLBACK_URL,
             },
             async function (accessToken, refreshToken, profile, done) {
+                console.log(profile);
                 try {
                     //const 쓰면 안됨
                     let user = await User.findOne({ googleId: profile.id });
@@ -47,7 +48,7 @@ PassportStrategy = function (passport) {
                         user = new User({
                             email: profile.emails[0].value,
                             googleId: profile.id,
-                            username: profile.name.givenName,
+                            username: profile._json.name,
                         });
                         await user.save();
                     }
